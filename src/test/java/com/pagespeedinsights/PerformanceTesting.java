@@ -38,28 +38,28 @@ public class PerformanceTesting extends BaseTest {
 			
 		
 	
-//	@Test(dataProvider = "desktopTestLink")
-//	public void desktopLinkPerformanceTest(String link) throws InterruptedException {
-//		driver.findElement(By.xpath("//input[@id='i4']")).sendKeys(link, Keys.ENTER);
-//		ListenerImplementation.test.info("Link Entered Successfully", MediaEntityBuilder.createScreenCaptureFromBase64String(WebDriverUtility.getScreenshotAsBase64(driver)).build());
-//		driver.findElement(By.xpath("//button[@id='desktop_tab']")).click();
-//		WebElement scroll = driver.findElement(By.xpath("(//div[@class='ihA92 ucyZQe'])[2]"));
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("arguments[0].scrollIntoView(true)",scroll);
-//		WebDriverWait wt = new WebDriverWait(driver, Duration.ofSeconds(40));
-//		wt.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("(//div[@jsname='mxdR1e'])[2]"))));
-//		Thread.sleep(2000);
-//		String desktopPerformanceScore = driver.findElement(By.xpath("(//div[@class='lh-gauge__percentage'])[16]")).getText();
-//		ListenerImplementation.test.info("Link ="+link+" || Desktop Score = "+desktopPerformanceScore, MediaEntityBuilder.createScreenCaptureFromBase64String(WebDriverUtility.getScreenshotAsBase64(driver)).build());
-//	}
+	@Test(dataProvider = "desktopTestLink")
+	public void desktopLinkPerformanceTest(String link) throws InterruptedException {
+		driver.findElement(By.xpath("//input[@id='i4']")).sendKeys(link, Keys.ENTER);
+		ListenerImplementation.test.info("Link Entered Successfully", MediaEntityBuilder.createScreenCaptureFromBase64String(WebDriverUtility.getScreenshotAsBase64(driver)).build());
+		driver.findElement(By.xpath("//button[@id='desktop_tab']")).click();
+		WebElement scroll = driver.findElement(By.xpath("(//div[@class='ihA92 ucyZQe'])[2]"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true)",scroll);
+		WebDriverWait wt = new WebDriverWait(driver, Duration.ofSeconds(40));
+		wt.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("(//div[@jsname='mxdR1e'])[2]"))));
+		Thread.sleep(2000);
+		String desktopPerformanceScore = driver.findElement(By.xpath("(//div[@class='lh-gauge__percentage'])[16]")).getText();
+		ListenerImplementation.test.info("Link ="+link+" || Desktop Score = "+desktopPerformanceScore, MediaEntityBuilder.createScreenCaptureFromBase64String(WebDriverUtility.getScreenshotAsBase64(driver)).build());
+	}
 	
 	@DataProvider
 	public Object[][] mobileTestLink() throws Throwable {
 		return ExcelUtility.getMultipleDataFromExcel("Sheet7");
 	}
 	
-//	@DataProvider
-//	public Object[][] desktopTestLink() throws Throwable {
-//		return ExcelUtility.getMultipleDataFromExcel("Sheet7");
-//	}
+	@DataProvider
+	public Object[][] desktopTestLink() throws Throwable {
+		return ExcelUtility.getMultipleDataFromExcel("Sheet7");
+	}
 }
